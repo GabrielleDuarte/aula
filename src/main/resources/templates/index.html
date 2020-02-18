@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>alunos</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<a href="/aluno/cadastrar" type="button" class="btn btn-info">Cadastrar aluno</a>
+<br>
+<a href="/professores" type="button" class="btn btn-info">Visualizar Professores Cadastrados</a>
+	<div class="container">
+		<div class="form-group row">
+			<label for="nome" class="col-6 col-form-label">Buscar</label>
+			<div class="col-8">
+				<form method="post" th:action="@{/}" th:object="${aluno}">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-search"></i>
+							</div>
+						</div>
+						<input th:field="*{nome}" placeholder="Digite o nome do aluno"
+							type="text" class="form-control">
+						<button name="submit" type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</form>
+
+
+	<div class="container">
+		<h1>Listagem de Alunos</h1>
+		<hr>
+		<ul th:each="aluno : ${alunos}">
+			<li><a th:href="@{/aluno/} + ${aluno.id}"><span
+					th:text="${aluno.nome}"></span></a></li>
+			<li th:text="${aluno.curso}"></li>
+		</ul>
+
+		<hr />
+	</div>
+</body>
+</html>

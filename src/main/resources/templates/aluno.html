@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>aluno</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+		<ul>
+			<li th:text="${aluno.nome}"></li>
+			<li th:text="${aluno.curso}"></li>
+		</ul>
+	</div>
+<a th:href="@{/aluno/editar/} + ${aluno.id}">Editar Informações do Aluno</a>
+<hr/>
+<form  th:method="delete" th:action="@{/aluno/excluir/{id}(id=${aluno.id})}" enctype="multipart/form-data">
+<input type="hidden" name="_method" value="DELETE"/>
+<input type="submit" value="Delete" class="btn btn-danger"> 
+</form>
+</body>
+</html>
